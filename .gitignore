@@ -1,0 +1,7 @@
+node_modules/
+
+cypress/videosFolder
+cypress/screenshotsFolder
+
+cypress/e2e
+
