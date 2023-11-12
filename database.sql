@@ -9,5 +9,4 @@ CREATE TABLE "todos" (
 INSERT INTO "todos"
   ("text")
   VALUES 
-  ('Build a CRUD app'),
-  ('Make my app look nice');
+  ('Make a new todo task', false);

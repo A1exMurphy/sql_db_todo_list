@@ -1,7 +1,8 @@
 node_modules/
+.DS_store
 
-cypress/videosFolder
-cypress/screenshotsFolder
+# cypress/videosFolder
+# cypress/screenshotsFolder
 
-cypress/e2e
+# cypress/e2e
 
