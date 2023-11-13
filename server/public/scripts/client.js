@@ -49,7 +49,7 @@ function markComplete(event) {
             url: `todos/${taskId}`,
             method: `PUT`
         }).then((response) => {
-            applyCompleteClass();
+            // applyCompleteClass();
             getTodos();
         }).catch((error) => {
             console.log(error, 'error completing task');
@@ -77,8 +77,9 @@ function removeTask(event) {
 }
 
 
-function applyCompleteClass(event) {
-    event.target.closest('li').classList.add(`completed`);
+function applyCompleteClass(task) {
+    document.getElementById(`${task.id}`).classList.remove(`inComplete`);
+    document.getElementById(`${task.id}`).classList.add(`completed`);
 }
 
 function renderTodos(todos) {
@@ -90,7 +91,7 @@ function renderTodos(todos) {
         `
         <li id=${task.id} data-testid="toDoItem">
             <span>
-                <button id="completeButton" data-testid="completeButton" onclick="markComplete(event), applyCompleteClass(event)"
+                <button id="completeButton" data-testid="completeButton" onclick="markComplete(event)"
                     >Complete
                 </button>
             </span>
@@ -102,5 +103,10 @@ function renderTodos(todos) {
             </span>
         </li>
         `
+        if(task.isComplete === true) {
+            applyCompleteClass(task);
+        } else if(task.isComplete === false) {
+            document.getElementById(`${task.id}`).classList.add(`inComplete`);
+        }
     }
 }

@@ -78,8 +78,7 @@ router.delete(`/:id`, (req, res) => {
     console.log(sqlValues, "this should be the task ID")
 
         pool.query(sqlQueryText, sqlValues)
-            let testVariable = dbResult
-            .then((testVariable) => {
+            .then((dbResult) => {
                 res.sendStatus(200);
             })
             .catch((dbError) => {
