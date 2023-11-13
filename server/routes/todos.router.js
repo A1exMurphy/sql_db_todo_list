@@ -1,9 +1,6 @@
 const router = require('express').Router();
 const pool = require('../modules/pool');
 
-//variables to define routes
-// const todoRouter = express.Router();
-
 
 
 //GET for intial render and updating render
@@ -49,7 +46,28 @@ router.post('/', (req, res) => {
 
 
 //DELETE to remove a task from the list
+router.delete(`/:id`, (req, res) => {
+    console.log(req.body)
+    const sqlQueryText =
+    `
+    DElETE FROM "todos"
+	WHERE "id" = ($1);
+    `
+    const sqlValues = [
+        req.params.id
+    ]
+    console.log(sqlValues, "this should be the task ID")
 
+        pool.query(sqlQueryText, sqlValues)
+            console.log(dbResult)
+            .then((dbResult) => {
+                res.sendStatus(200)
+            })
+            .catch((dbError) => {
+                console.log(dbError, `DELETE query failed`)
+                res.sendStatus(500)
+            })
+});
 
 
 module.exports = router;

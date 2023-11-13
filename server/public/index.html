@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <script src="./scripts/axios.js"></script>
-  <script src="./scripts/client.js"></script>
+  <script defer src="./scripts/axios.js"></script>
+  <script defer src="./scripts/client.js"></script>
   <title>SQL TO-DO List</title>
 </head>
 <body>
   <header>
     <h1>SQL TO-DO List</h1>
   </header>
-  <form><button onclick="addTodos(event)">Add</button>
+  <form><button data-testid="submitButton" onclick="addTodos(event)">Add</button>
     <input id="toDoTextInput" data-testid="toDoTextInput" type="text" placeholder="New Task" value=""></input>
   </form>
   <ol id="todoList">
