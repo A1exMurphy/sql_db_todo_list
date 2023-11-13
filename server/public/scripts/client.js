@@ -13,5 +13,13 @@ function getTodos() {
 }
 
 function renderTodos(todos) {
-    
+    let todoList = document.getElementById(`todoList`);
+    todoList.innerHTML = "";
+
+    for (const task of todos) {
+        todoList.innerHTML = 
+        `
+        <li data-testid="toDoItem">${task.text}<span><button>"Remove"</button></span></li>
+        `
+    }
 }
