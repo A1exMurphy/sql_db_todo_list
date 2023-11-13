@@ -1,2 +1,10 @@
+body {
+    background-image: url("https://giphy.com/gifs/pudgypenguins-building-build-brick-Mah9dFWo1WZX0WM62Q");
+    background-size: cover;
+}
+iframe {
+    align-items: ;
+}
+
 .completed {background-color: aquamarine;}
 .inComplete {background-color: salmon;}

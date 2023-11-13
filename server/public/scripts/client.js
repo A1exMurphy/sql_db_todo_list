@@ -78,8 +78,8 @@ function removeTask(event) {
 
 
 function applyCompleteClass(task) {
-    document.getElementById(`${task.id}`).classList.remove(`inComplete`);
-    document.getElementById(`${task.id}`).classList.add(`completed`);
+    document.getElementById(`${task.text}`).classList.remove(`inComplete`);
+    document.getElementById(`${task.text}`).classList.add(`completed`);
 }
 
 function renderTodos(todos) {
@@ -95,7 +95,7 @@ function renderTodos(todos) {
                     >Complete
                 </button>
             </span>
-                ${task.text}
+                <span id="${task.text}">${task.text}</span>
             <span>
                 <button id="deleteButton" data-testid="deleteButton" onclick="removeTask(event)"
                     >Remove
@@ -106,7 +106,7 @@ function renderTodos(todos) {
         if(task.isComplete === true) {
             applyCompleteClass(task);
         } else if(task.isComplete === false) {
-            document.getElementById(`${task.id}`).classList.add(`inComplete`);
+            document.getElementById(`${task.text}`).classList.add(`inComplete`);
         }
     }
 }
