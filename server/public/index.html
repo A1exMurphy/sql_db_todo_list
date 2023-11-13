@@ -12,8 +12,8 @@
   <header>
     <h1>SQL TO-DO List</h1>
   </header>
-  <form><button onclick="(event)">Add</button>
-    <input data-testid="toDoTextInput">New Task</input>
+  <form><button onclick="addTodos(event)">Add</button>
+    <input id="toDoTextInput" data-testid="toDoTextInput" type="text" placeholder="New Task" value=""></input>
   </form>
   <ol id="todoList">
 

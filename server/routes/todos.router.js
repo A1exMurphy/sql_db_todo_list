@@ -23,7 +23,27 @@ router.get('/', (req, res) => {
 })
 
 //POST for adding task to db 
+router.post('/', (req, res) => {
+    console.log(req.body);
 
+    const sqlQueryText = 
+    `
+    INSERT INTO "todos"
+        ("text", "isComplete")
+        VALUES
+        ($1,$2);
+    `
+    const sqlValues = [req.body.text, req.body.isComplete];
+    console.log(sqlValues, "is the task being added from client");
+
+    pool.query(sqlQueryText, sqlValues)
+        .then((dbResult) => {
+            res.sendStatus(201);
+            console.log('POST successful');
+        }).catch((dbError) => {
+            res.sendStatus(500);
+        })
+})
 
 //PUT to change status of tasks 
 
