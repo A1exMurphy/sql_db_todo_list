@@ -49,7 +49,11 @@ function markComplete(event) {
 function removeTask(event) {
     event.preventDefault();
     console.log(`removed task from list`);
-    
+
+    let taskId = event.target.closest('li').getAttribute('id')
+    console.log(taskId);
+
+
 }
 
 
@@ -62,7 +66,7 @@ function renderTodos(todos) {
     for (const task of todos) {
         todoList.innerHTML += 
         `
-        <li data-testid="toDoItem">
+        <li id="${task.id}" data-testid="toDoItem">
             <span>
                 <button id="completeButton" data-testid="completeButton" onclick="markComplete(event)"
                     >Complete
