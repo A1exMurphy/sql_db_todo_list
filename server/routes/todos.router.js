@@ -43,7 +43,26 @@ router.post('/', (req, res) => {
 })
 
 //PUT to change status of tasks 
+router.put(`/:id`, (req, res) => {
+    const sqlQueryText = 
+    `
+    UPDATE "todos"
+    SET "isComplete" = 'true'
+    WHERE "id" = ($1);
+    `
 
+    const sqlValues = [
+        req.params.id
+    ];
+
+        pool.query(sqlQueryText, sqlValues)
+            .then((dbResult) => {
+                res.sendStatus(201);
+                console.log('updated isComplete');
+            }).catch((dbError) => {
+                res.sendStatus(500);
+            })
+})
 
 //DELETE to remove a task from the list
 router.delete(`/:id`, (req, res) => {
@@ -55,17 +74,17 @@ router.delete(`/:id`, (req, res) => {
     `
     const sqlValues = [
         req.params.id
-    ]
+    ];
     console.log(sqlValues, "this should be the task ID")
 
         pool.query(sqlQueryText, sqlValues)
-            console.log(dbResult)
-            .then((dbResult) => {
-                res.sendStatus(200)
+            let testVariable = dbResult
+            .then((testVariable) => {
+                res.sendStatus(200);
             })
             .catch((dbError) => {
                 console.log(dbError, `DELETE query failed`)
-                res.sendStatus(500)
+                res.sendStatus(500);
             })
 });
 

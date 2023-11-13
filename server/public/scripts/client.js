@@ -43,6 +43,18 @@ console.log(document.getElementById(`toDoTextInput`).value);
 function markComplete(event) {
     event.preventDefault();
     console.log(`cross off list task`);
+    let taskId = (event.target.closest('li').getAttribute('id'))
+
+        axios({
+            url: `todos/${taskId}`,
+            method: `PUT`
+        }).then((response) => {
+            applyCompleteClass();
+            getTodos();
+        }).catch((error) => {
+            console.log(error, 'error completing task');
+            alert('error completing task');
+        })
 
 }
 
@@ -50,7 +62,7 @@ function removeTask(event) {
     event.preventDefault();
     console.log(`removed task from list`);
 
-    let taskId = Number(event.target.closest('li').getAttribute('id'))
+    let taskId = (event.target.closest('li').getAttribute('id'))
     console.log(taskId);
 
         axios({
@@ -65,7 +77,9 @@ function removeTask(event) {
 }
 
 
-
+function applyCompleteClass(event) {
+    event.target.closest('li').classList.add(`completed`);
+}
 
 function renderTodos(todos) {
     let todoList = document.getElementById(`todoList`);
@@ -76,7 +90,7 @@ function renderTodos(todos) {
         `
         <li id=${task.id} data-testid="toDoItem">
             <span>
-                <button id="completeButton" data-testid="completeButton" onclick="markComplete(event)"
+                <button id="completeButton" data-testid="completeButton" onclick="markComplete(event), applyCompleteClass(event)"
                     >Complete
                 </button>
             </span>
