@@ -39,10 +39,18 @@ console.log(document.getElementById(`toDoTextInput`).value);
 
 
 
+//functions to cross off and remove entirely tasks from list
+function markComplete(event) {
+    event.preventDefault();
+    console.log(`cross off list task`);
 
+}
 
-
-
+function removeTask(event) {
+    event.preventDefault();
+    console.log(`removed task from list`);
+    
+}
 
 
 
@@ -52,15 +60,19 @@ function renderTodos(todos) {
     todoList.innerHTML = "";
 
     for (const task of todos) {
-        todoList.innerHTML = 
+        todoList.innerHTML += 
         `
         <li data-testid="toDoItem">
             <span>
-                <button data-testid="completeButton">"Complete"</button>
+                <button id="completeButton" data-testid="completeButton" onclick="markComplete(event)"
+                    >Complete
+                </button>
             </span>
                 ${task.text}
             <span>
-                <button data-testid="deleteButton">"Remove"</button>
+                <button id="deleteButton" data-testid="deleteButton" onclick="removeTask(event)"
+                    >Remove
+                </button>
             </span>
         </li>
         `
